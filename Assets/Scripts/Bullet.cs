@@ -16,9 +16,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)       // Whenever a gameobject enters a zone. We want to add Collider2D, this will store information of what we hit. 
     {
-        Debug.Log(hitInfo.name);
-        Destroy(gameObject);
+        if (hitInfo.tag == "Enemy" || hitInfo.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+       
     }
-
-
 }
