@@ -35,7 +35,7 @@ public class FireRangeCollision : MonoBehaviour
         if (target.tag == "Player")
         {
             detected = true;
-            enemy.GetComponent<EnemyMovement>().enabled = false;
+            enemy.GetComponent<EnemyIdle>().enabled = false;
         }
     }
     private void OnTriggerExit2D(Collider2D target)
@@ -43,7 +43,7 @@ public class FireRangeCollision : MonoBehaviour
         if (target.tag == "Player")
         {
             detected = false;
-            enemy.GetComponent<EnemyMovement>().enabled = true;
+            enemy.GetComponent<EnemyIdle>().enabled = true;
         }
     }
 

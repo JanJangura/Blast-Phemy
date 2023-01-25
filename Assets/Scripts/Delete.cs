@@ -16,4 +16,12 @@ public class Delete : MonoBehaviour
         yield return new WaitForSeconds(timer);
         Object.Destroy(this.gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        if (hitInfo.tag == "HitBox")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

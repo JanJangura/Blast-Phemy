@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundObjects;
     public float checkRadius;
     public Animator animator;
+    public int maxHealth;
+    public int currentHealth;
+    public HealthBar healthBar;
 
     private Rigidbody2D rb;
     private bool facingRight = true;
@@ -23,28 +26,36 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); // Will look for a component on this GameObject (what the script is attached to) of type Rigidbody 2D/
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
     
 
     // Update is called once per frame
     void Update()
     {
-        // Get Player Inputs
-        ProcessInputs();
+        if (!PauseMenu.isPaused)
+        {
+            // Get Player Inputs
+            ProcessInputs();
 
-        // Animate
-        Animate();
-  
+            // Animate
+            Animate();
+        }
     }
 
     // Better for handling Physics
     private void FixedUpdate()
     {
-        // Check if we're grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
+        if (!PauseMenu.isPaused)
+        {   
+            // Check if we're grounded
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
 
-        // Move
-        Move();
+            // Move
+            Move();
+            // Check if we're grounded
+        }
     }
 
     private void Move()
@@ -57,7 +68,25 @@ public class PlayerMovement : MonoBehaviour
         }
         isJumping = false;
     }
+    private void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
 
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        if (hitInfo.tag == "Enemy Bullet")
+        {
+            TakeDamage(1);
+        }
+    }
     private void Animate()
     {
         if (moveDirection > 0 && !facingRight)

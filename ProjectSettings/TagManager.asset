@@ -5,17 +5,23 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Bullet
+  - Enemy Bullet
+  - HitBox
+  - FallOfDeath
+  - Action
+  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - GroundOnly
   - Ground
-  - 
-  - 
+  - Obstacle
+  - Action
   - 
   - 
   - 
@@ -41,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 893970309
     locked: 0

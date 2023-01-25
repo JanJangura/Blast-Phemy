@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3884726862114752142}
   m_Layer: 0
   m_Name: Ball-of-Energy
-  m_TagString: Untagged
+  m_TagString: Enemy Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05238819, y: 0.013666391}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -146,7 +146,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.79, y: 1.51}
+  m_Size: {x: 1.5758944, y: 1.3824487}
   m_EdgeRadius: 0
 --- !u!114 &3884726862114752142
 MonoBehaviour:
